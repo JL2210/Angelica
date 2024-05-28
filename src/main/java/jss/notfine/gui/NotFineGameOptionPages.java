@@ -190,7 +190,7 @@ public class NotFineGameOptionPages {
             .add(Settings.MODE_WATER.option)
             .add(Settings.DOWNFALL_DISTANCE.option)
             .add(Settings.MODE_VIGNETTE.option)
-            .add(Settings.DYNAMIC_LIGHTS.option)
+            .add(Settings.DYNAMIC_LIGHTS.option, AngelicaConfig.enableDynamicLights)
             .add(Settings.MODE_SHADOWS.option)
             .add(Settings.VOID_FOG.option)
             .add(Settings.MODE_DROPPED_ITEMS.option)
@@ -206,12 +206,13 @@ public class NotFineGameOptionPages {
             .add(Settings.MODE_SKY.option)
             .add(Settings.MODE_SUN_MOON.option)
             .add(Settings.MODE_CLOUDS.option)
-            //.add(Settings.RENDER_DISTANCE_CLOUDS.option)
+            .add(Settings.RENDER_DISTANCE_CLOUDS.option)
             .add(Settings.CLOUD_HEIGHT.option)
-            //.add(Settings.CLOUD_SCALE.option)
+            .add(Settings.CLOUD_SCALE.option)
             .add(Settings.MODE_CLOUD_TRANSLUCENCY.option)
             .add(Settings.MODE_STARS.option)
             .add(Settings.TOTAL_STARS.option)
+            .add(Settings.FOG_NEAR_DISTANCE.option)
         .build());
         return new OptionPage(I18n.format("options.button.sky"), ImmutableList.copyOf(groups));
     }

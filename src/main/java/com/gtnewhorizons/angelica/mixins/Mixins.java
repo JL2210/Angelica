@@ -102,6 +102,7 @@ public enum Mixins {
         .setPhase(Phase.EARLY).setApplyIf(() -> AngelicaConfig.enableSodium).addMixinClasses(
              "sodium.MixinChunkProviderClient"
             ,"sodium.MixinBlock"
+            ,"sodium.MixinBlockFluidBase"
             ,"sodium.AccessorBiomeColorEvent"
             ,"sodium.MixinBiomeGenBase"
             ,"sodium.MixinChunk"
@@ -251,7 +252,9 @@ public enum Mixins {
             "toggle.MixinEntityRenderer",
             "toggle.MixinGuiIngame",
             "toggle.MixinRender",
-            "toggle.MixinRenderItem"
+            "toggle.MixinRenderItem",
+
+            "interpolatedtexturemap.MixinTextureMap"
         ))
     ),
     BETTER_FACE_CULLING(new Builder("Better face culling")
@@ -262,6 +265,7 @@ public enum Mixins {
             "MixinBlock",
             "MixinBlockCactus",
             "MixinBlockCarpet",
+            "MixinBlockEnchantmentTable",
             "MixinBlockFarmland",
             "MixinBlockSlab",
             "MixinBlockSnow",

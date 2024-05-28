@@ -40,7 +40,7 @@ public enum Settings {
             SettingsManager.cloudsUpdated();
         }
     },
-    CLOUD_SCALE(new NotFineOptionSlider(4, 2, 20, 1, null)),
+    CLOUD_SCALE(new NotFineOptionSlider(1, 1, 3, 1, null)),
     DOWNFALL_DISTANCE(new NotFineOptionCycling<>(DownfallQuality.DEFAULT, OptionImpact.MEDIUM)) {
         @Override
         public void applyChanges() {
@@ -54,6 +54,7 @@ public enum Settings {
             DynamicLights.Mode = (DynamicLightsMode) DYNAMIC_LIGHTS.option.getStore();
         }
     },
+    FOG_NEAR_DISTANCE(new NotFineOptionSliderPercentage(75, 1, 100, 1, OptionImpact.LOW)),
     GUI_BACKGROUND(new NotFineOptionCycling<>(BackgroundSelect.DEFAULT, null)) {
         @Override
         public void applyChanges() {
@@ -111,7 +112,7 @@ public enum Settings {
     },
     PARTICLES_ENC_TABLE(new NotFineOptionSlider(1, 0, 16, 1, OptionImpact.LOW)),
     PARTICLES_VOID(new NotFineOptionTickBox(true, OptionImpact.LOW)),
-    RENDER_DISTANCE_CLOUDS(new NotFineOptionSlider(4, 4, 64, 2, OptionImpact.VARIES)) {
+    RENDER_DISTANCE_CLOUDS(new NotFineOptionSlider(4, 4, 64, 1, OptionImpact.VARIES)) {
         @Override
         public void applyChanges() {
             SettingsManager.cloudsUpdated();
@@ -171,8 +172,7 @@ public enum Settings {
 
         @Override
         public Control<Integer> getControl() {
-            //TODO: Don't hardcode CLOUD_SCALE check.
-            return new SliderControl(this, min, max, step, setting != Settings.CLOUD_SCALE ? ControlValueFormatter.number() : NotFineControlValueFormatter.multiplied(0.25f));
+            return new SliderControl(this, min, max, step, ControlValueFormatter.number());
         }
 
         @Override
@@ -186,6 +186,19 @@ public enum Settings {
             value = store;
             modifiedValue = store;
         }
+    }
+
+    public static class NotFineOptionSliderPercentage extends NotFineOptionSlider {
+
+        protected NotFineOptionSliderPercentage(int base, int min, int max, int step,  OptionImpact impact, OptionFlag... optionFlags) {
+            super(base, min, max, step, impact, optionFlags);
+        }
+
+        @Override
+        public Control<Integer> getControl() {
+            return new SliderControl(this, min, max, step, NotFineControlValueFormatter.percentage());
+        }
+
     }
 
     public static class NotFineOptionTickBox extends NotFineOption<Boolean> {

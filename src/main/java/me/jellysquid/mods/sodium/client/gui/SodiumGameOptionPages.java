@@ -81,13 +81,14 @@ public class SodiumGameOptionPages {
         firstGroupBuilder.add(Settings.MODE_LIGHT_FLICKER.option)
             .add(Settings.MODE_SKY.option)
             .add(Settings.MODE_SUN_MOON.option)
-            //.add(Settings.RENDER_DISTANCE_CLOUDS.option)
+            .add(Settings.RENDER_DISTANCE_CLOUDS.option)
             .add(Settings.CLOUD_HEIGHT.option)
-            //.add(Settings.CLOUD_SCALE.option)
+            .add(Settings.CLOUD_SCALE.option)
             .add(Settings.MODE_CLOUD_TRANSLUCENCY.option)
             .add(Settings.MODE_STARS.option)
-            .add(Settings.TOTAL_STARS.option);
-        firstGroupBuilder.add(Settings.VOID_FOG.option);
+            .add(Settings.TOTAL_STARS.option)
+            .add(Settings.FOG_NEAR_DISTANCE.option)
+            .add(Settings.VOID_FOG.option);
         groups.add(firstGroupBuilder.build());
 
         int maxGuiScale = Math.max(3, Math.min(Minecraft.getMinecraft().displayWidth / 320, Minecraft.getMinecraft().displayHeight / 240));
@@ -221,7 +222,7 @@ public class SodiumGameOptionPages {
                 )*/
                 .add(Settings.MODE_SHADOWS.option)
                 .add(Settings.MODE_VIGNETTE.option)
-                .add(Settings.DYNAMIC_LIGHTS.option)
+                .add(Settings.DYNAMIC_LIGHTS.option, AngelicaConfig.enableDynamicLights)
                 .build());
 
 
